@@ -1,0 +1,3443 @@
+{
+  "info": {
+    "_postman_id": "d78a1d3a-f84a-46f7-b6af-0463de17495a",
+    "name": "IE-API-Report",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "43716692",
+    "_collection_link": "https://go.postman.co/collection/43716692-d78a1d3a-f84a-46f7-b6af-0463de17495a?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Auth-User",
+      "item": [
+        {
+          "name": "User",
+          "item": [
+            {
+              "name": "admin",
+              "item": [
+                {
+                  "name": "update Profile user",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "PUT",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"username\":\"USER_TEST\",\r\n    \"password\":\"111\",\r\n    \"oldpassword\":\"111\",\r\n    \"phone\":\"111\",\r\n    \"role\":\"USER\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{local}}user/admin/updateProfileUser/7",
+                      "host": ["{{local}}user"],
+                      "path": ["admin", "updateProfileUser", "7"]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "update role user by phone",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "PUT",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"phone\":\"123\",\r\n    \"role\":\"USER\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{local}}user/admin/updateRoleUserByphone",
+                      "host": ["{{local}}user"],
+                      "path": ["admin", "updateRoleUserByphone"]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "update password user by phone",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "PUT",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"phone\":\"123\",\r\n    \"password\":\"123\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{local}}user/admin/updatePasswordUserByphone",
+                      "host": ["{{local}}user"],
+                      "path": ["admin", "updatePasswordUserByphone"]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "delete user",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "DELETE",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{local}}user/admin/delete/18",
+                      "host": ["{{local}}user"],
+                      "path": ["admin", "delete", "18"]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "getAllusers",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{local}}user/admin/getAllusers",
+                      "host": ["{{local}}user"],
+                      "path": ["admin", "getAllusers"]
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            },
+            {
+              "name": "getProfile",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{local}}user/getProfile",
+                  "host": ["{{local}}user"],
+                  "path": ["getProfile"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "update profile",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"username\":\"vichea\",\r\n    \"phone\":\"123\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{local}}user/updateProfile",
+                  "host": ["{{local}}user"],
+                  "path": ["updateProfile"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "update password",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"currentPassword\":\"123\",\r\n    \"newPassword\":\"123\",\r\n    \"confirmPassword\":\"123\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{local}}user/updatePassword",
+                  "host": ["{{local}}user"],
+                  "path": ["updatePassword"]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Auth",
+          "item": [
+            {
+              "name": "2 Factor Login",
+              "item": [
+                {
+                  "name": "Login Phone Ask First Device",
+                  "event": [
+                    {
+                      "listen": "test",
+                      "script": {
+                        "exec": [
+                          "// Make sure the response is available before parsing\r",
+                          "if (pm.response) {\r",
+                          "    const responseBody = pm.response.json();  // Correct method to parse response body as JSON\r",
+                          "    console.log(responseBody); // Log the response body for debugging\r",
+                          "\r",
+                          "    try {\r",
+                          "        const { success, data,message } = responseBody;\r",
+                          "\r",
+                          "        if (success && message == \"Login successful\") {\r",
+                          "            // Set the token as an environment variable\r",
+                          "            pm.environment.set(\"token\", data?.token);\r",
+                          "        } else {\r",
+                          "            console.log(\"Login failed\");\r",
+                          "        }\r",
+                          "    } catch (error) {\r",
+                          "        console.log(\"Error processing the response body:\", error);\r",
+                          "    }\r",
+                          "} else {\r",
+                          "    console.log(\"No response received\");\r",
+                          "}\r",
+                          ""
+                        ],
+                        "type": "text/javascript",
+                        "packages": {}
+                      }
+                    },
+                    {
+                      "listen": "prerequest",
+                      "script": {
+                        "exec": [""],
+                        "type": "text/javascript",
+                        "packages": {}
+                      }
+                    }
+                  ],
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"phone\":\"123\",\r\n    \"password\": \"123\",\r\n    \"force\": false,\r\n    \"device\":\"123\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{local}}auth/login-phone-ask-first-device",
+                      "host": ["{{local}}auth"],
+                      "path": ["login-phone-ask-first-device"]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Approve Login",
+                  "event": [
+                    {
+                      "listen": "test",
+                      "script": {
+                        "exec": [
+                          "// Make sure the response is available before parsing\r",
+                          "if (pm.response) {\r",
+                          "    const responseBody = pm.response.json();  // Correct method to parse response body as JSON\r",
+                          "    console.log(responseBody); // Log the response body for debugging\r",
+                          "\r",
+                          "    try {\r",
+                          "        const { success, data,message } = responseBody;\r",
+                          "\r",
+                          "        if (success && message == \"Login successful\") {\r",
+                          "            // Set the token as an environment variable\r",
+                          "            pm.environment.set(\"token\", data?.token);\r",
+                          "        } else {\r",
+                          "            console.log(\"Login failed\");\r",
+                          "        }\r",
+                          "    } catch (error) {\r",
+                          "        console.log(\"Error processing the response body:\", error);\r",
+                          "    }\r",
+                          "} else {\r",
+                          "    console.log(\"No response received\");\r",
+                          "}\r",
+                          ""
+                        ],
+                        "type": "text/javascript",
+                        "packages": {}
+                      }
+                    },
+                    {
+                      "listen": "prerequest",
+                      "script": {
+                        "exec": [""],
+                        "type": "text/javascript",
+                        "packages": {}
+                      }
+                    }
+                  ],
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"userId\": \"1\",\r\n    \"device\":\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36\",\r\n    \"uuID\":\"9f6b836a-5d37-4f78-88c0-34482452a84a\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{local}}auth/approve-login",
+                      "host": ["{{local}}auth"],
+                      "path": ["approve-login"]
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            },
+            {
+              "name": "OAuth Telegram",
+              "item": [
+                {
+                  "name": "New Request",
+                  "request": {
+                    "method": "POST",
+                    "header": [],
+                    "url": {
+                      "raw": "https://oauth.telegram.org/auth?bot_id=7742481926&origin=https://ie-api-report.digitaleconomy.gov.kh&return_to=https://ie-api-report.digitaleconomy.gov.kh/auth/telegram/callback&request_access=write",
+                      "protocol": "https",
+                      "host": ["oauth", "telegram", "org"],
+                      "path": ["auth"],
+                      "query": [
+                        {
+                          "key": "bot_id",
+                          "value": "7742481926"
+                        },
+                        {
+                          "key": "origin",
+                          "value": "https://ie-api-report.digitaleconomy.gov.kh"
+                        },
+                        {
+                          "key": "return_to",
+                          "value": "https://ie-api-report.digitaleconomy.gov.kh/auth/telegram/callback"
+                        },
+                        {
+                          "key": "request_access",
+                          "value": "write"
+                        },
+                        {
+                          "key": "size",
+                          "value": "medium",
+                          "disabled": true
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "New Request Copy",
+                  "request": {
+                    "method": "POST",
+                    "header": [],
+                    "url": {
+                      "raw": "https://ie-api-report.digitaleconomy.gov.kh/auth/telegram",
+                      "protocol": "https",
+                      "host": ["ie-api-report", "digitaleconomy", "gov", "kh"],
+                      "path": ["auth", "telegram"]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "New Request Copy 2",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "https://ie-api-report.digitaleconomy.gov.kh/auth/telegram/callback",
+                      "protocol": "https",
+                      "host": ["ie-api-report", "digitaleconomy", "gov", "kh"],
+                      "path": ["auth", "telegram", "callback"]
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            },
+            {
+              "name": "Login",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "// Make sure the response is available before parsing\r",
+                      "if (pm.response) {\r",
+                      "    const responseBody = pm.response.json();  // Correct method to parse response body as JSON\r",
+                      "    console.log(responseBody); // Log the response body for debugging\r",
+                      "\r",
+                      "    try {\r",
+                      "        const { success, data,message } = responseBody;\r",
+                      "\r",
+                      "        if (success && message == \"Login successful\") {\r",
+                      "            // Set the token as an environment variable\r",
+                      "            pm.environment.set(\"token\", data?.token);\r",
+                      "        } else {\r",
+                      "            console.log(\"Login failed\");\r",
+                      "        }\r",
+                      "    } catch (error) {\r",
+                      "        console.log(\"Error processing the response body:\", error);\r",
+                      "    }\r",
+                      "} else {\r",
+                      "    console.log(\"No response received\");\r",
+                      "}\r",
+                      ""
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                },
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "exec": [""],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"phone\":\"123\",\r\n    \"password\": \"123\",\r\n    \"force\": true,\r\n    \"device\":\"123\",\r\n    \"uuID\":\"ertsfds\"\r\n    // ,\"tokenNotification\":\"eALTQjiOWhr5ZLat6-07Pk:APA91bHlzE0vd9HZ7_Qmej26Z9ByfjF7ErIhw9LxcDnX97BWc61KJCwjwWL1pw2ntvJv49sFNZ0SulBGLdRunzWrH-dr5mxj7jEnO7UtGk00s6r_CvNEjIc\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{local}}auth/login-phone",
+                  "host": ["{{local}}auth"],
+                  "path": ["login-phone"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Register - (admin)",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"username\": \"unan\",\r\n    \"password\": \"123456\",\r\n    \"phone\":\"089572570\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{local}}auth/register",
+                  "host": ["{{local}}auth"],
+                  "path": ["register"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Register-not-required",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"username\": \"user-test\",\r\n    \"password\": \"123456\",\r\n    \"phone\":\"012345678\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{local}}auth/register-not-required-admin",
+                  "host": ["{{local}}auth"],
+                  "path": ["register-not-required-admin"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Request-otp",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "// Make sure the response is available before parsing\r",
+                      "if (pm.response) {\r",
+                      "    const responseBody = pm.response.json();  // Correct method to parse response body as JSON\r",
+                      "    console.log(responseBody); // Log the response body for debugging\r",
+                      "\r",
+                      "    try {\r",
+                      "        const { success, data,message } = responseBody;\r",
+                      "\r",
+                      "        if (success && message == \"Login successful\") {\r",
+                      "            // Set the token as an environment variable\r",
+                      "            pm.environment.set(\"token\", data?.token);\r",
+                      "        } else {\r",
+                      "            console.log(\"Login failed\");\r",
+                      "        }\r",
+                      "    } catch (error) {\r",
+                      "        console.log(\"Error processing the response body:\", error);\r",
+                      "    }\r",
+                      "} else {\r",
+                      "    console.log(\"No response received\");\r",
+                      "}\r",
+                      ""
+                    ],
+                    "type": "text/javascript",
+                    "packages": {}
+                  }
+                },
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "exec": [""],
+                    "type": "text/javascript",
+                    "packages": {}
+                  }
+                }
+              ],
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"phone\": \"098715327\"\r\n}\r\n\r\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{local}}auth/login-request-otp",
+                  "host": ["{{local}}auth"],
+                  "path": ["login-request-otp"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Login-otp",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "// Make sure the response is available before parsing\r",
+                      "if (pm.response) {\r",
+                      "    const responseBody = pm.response.json();  // Correct method to parse response body as JSON\r",
+                      "    console.log(responseBody); // Log the response body for debugging\r",
+                      "\r",
+                      "    try {\r",
+                      "        const { success, data,message } = responseBody;\r",
+                      "\r",
+                      "        if (success && message == \"Login successful\") {\r",
+                      "            // Set the token as an environment variable\r",
+                      "            pm.environment.set(\"token\", data?.token);\r",
+                      "        } else {\r",
+                      "            console.log(\"Login failed\");\r",
+                      "        }\r",
+                      "    } catch (error) {\r",
+                      "        console.log(\"Error processing the response body:\", error);\r",
+                      "    }\r",
+                      "} else {\r",
+                      "    console.log(\"No response received\");\r",
+                      "}\r",
+                      ""
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                },
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "exec": [""],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"phone\": \"123\",\r\n    \"code\": \"123\",\r\n    \"device\":\"Iphone:OS 26\",\r\n    \"uuID\": \"123\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{local}}auth/login-phone-otp",
+                  "host": ["{{local}}auth"],
+                  "path": ["login-phone-otp"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Logout",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [""],
+                    "type": "text/javascript",
+                    "packages": {}
+                  }
+                }
+              ],
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{local}}auth/logout",
+                  "host": ["{{local}}auth"],
+                  "path": ["logout"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Refresh-token",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "// Make sure the response is available before parsing\r",
+                      "if (pm.response) {\r",
+                      "    const responseBody = pm.response.json();  // Correct method to parse response body as JSON\r",
+                      "    console.log(responseBody); // Log the response body for debugging\r",
+                      "\r",
+                      "    try {\r",
+                      "        const { success, data,message } = responseBody;\r",
+                      "\r",
+                      "        if (success && message == \"Token refreshed successfully\") {\r",
+                      "            // Set the token as an environment variable\r",
+                      "            pm.environment.set(\"token\", data?.token);\r",
+                      "        } else {\r",
+                      "            console.log(\"Login failed\");\r",
+                      "        }\r",
+                      "    } catch (error) {\r",
+                      "        console.log(\"Error processing the response body:\", error);\r",
+                      "    }\r",
+                      "} else {\r",
+                      "    console.log(\"No response received\");\r",
+                      "}\r",
+                      ""
+                    ],
+                    "type": "text/javascript",
+                    "packages": {}
+                  }
+                }
+              ],
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"refreshToken\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjcsImRldmljZSI6ImVzZGZkc2ZydCIsInV1SUQiOiJlcnRzZmRzIiwiaWF0IjoxNzU2Mjc5MjQxLCJleHAiOjE3NTYyNzk4NDV9.LFOj9cSg3hQVkyURiG6S88Kmdsw777UV5edac8_pikc\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{local}}auth/refresh-token",
+                  "host": ["{{local}}auth"],
+                  "path": ["refresh-token"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Check Expire",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{local}}auth/checkExpire",
+                  "host": ["{{local}}auth"],
+                  "path": ["checkExpire"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "New Request",
+              "request": {
+                "method": "GET",
+                "header": []
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Reports",
+      "item": [
+        {
+          "name": "Dashboard",
+          "item": [
+            {
+              "name": "Get Daily Registration",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{local}}api/v1/internal/report-dashboard/get-dashboard-daily-registration?month=2026-03",
+                  "host": ["{{local}}api"],
+                  "path": [
+                    "v1",
+                    "internal",
+                    "report-dashboard",
+                    "get-dashboard-daily-registration"
+                  ],
+                  "query": [
+                    {
+                      "key": "month",
+                      "value": "2026-03"
+                    },
+                    {
+                      "key": "force",
+                      "value": "true",
+                      "disabled": true
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get Monthly Registration",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{local}}api/v1/internal/report-dashboard/get-dashboard-monthly-registration?year=2025",
+                  "host": ["{{local}}api"],
+                  "path": [
+                    "v1",
+                    "internal",
+                    "report-dashboard",
+                    "get-dashboard-monthly-registration"
+                  ],
+                  "query": [
+                    {
+                      "key": "year",
+                      "value": "2025"
+                    },
+                    {
+                      "key": "force",
+                      "value": "true",
+                      "disabled": true
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get Yearly Registration",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{local}}api/v1/internal/report-dashboard/get-dashboard-yearly-registration",
+                  "host": ["{{local}}api"],
+                  "path": [
+                    "v1",
+                    "internal",
+                    "report-dashboard",
+                    "get-dashboard-yearly-registration"
+                  ],
+                  "query": [
+                    {
+                      "key": "force",
+                      "value": "true",
+                      "disabled": true
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get Total Registration",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{local}}api/v1/internal/report-dashboard/get-total-dashboard-registration",
+                  "host": ["{{local}}api"],
+                  "path": [
+                    "v1",
+                    "internal",
+                    "report-dashboard",
+                    "get-total-dashboard-registration"
+                  ],
+                  "query": [
+                    {
+                      "key": "force",
+                      "value": "true",
+                      "disabled": true
+                    }
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Report",
+          "item": [
+            {
+              "name": "Get All Province Registration",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{local}}api/v1/internal/report/get-all-provinces-registration?force=ture",
+                  "host": ["{{local}}api"],
+                  "path": [
+                    "v1",
+                    "internal",
+                    "report",
+                    "get-all-provinces-registration"
+                  ],
+                  "query": [
+                    {
+                      "key": "force",
+                      "value": "ture"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get All Province Registration Copy",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{local}}api/v1/internal/report/get-all-provinces-registration?force=ture",
+                  "host": ["{{local}}api"],
+                  "path": [
+                    "v1",
+                    "internal",
+                    "report",
+                    "get-all-provinces-registration"
+                  ],
+                  "query": [
+                    {
+                      "key": "force",
+                      "value": "ture"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get All Sectors Registration",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{local}}api/v1/internal/report/get-all-sectors-registration?force=true",
+                  "host": ["{{local}}api"],
+                  "path": [
+                    "v1",
+                    "internal",
+                    "report",
+                    "get-all-sectors-registration"
+                  ],
+                  "query": [
+                    {
+                      "key": "force",
+                      "value": "true"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get All Application Status",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{local}}api/v1/internal/report/get-all-applications-status?force=true",
+                  "host": ["{{local}}api"],
+                  "path": [
+                    "v1",
+                    "internal",
+                    "report",
+                    "get-all-applications-status"
+                  ],
+                  "query": [
+                    {
+                      "key": "force",
+                      "value": "true"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get All Methods Registration",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{local}}api/v1/internal/report/get-all-methods-registration?force=true",
+                  "host": ["{{local}}api"],
+                  "path": [
+                    "v1",
+                    "internal",
+                    "report",
+                    "get-all-methods-registration"
+                  ],
+                  "query": [
+                    {
+                      "key": "force",
+                      "value": "true"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Activity",
+          "item": [
+            {
+              "name": "Details Unit Institution",
+              "item": [
+                {
+                  "name": "Person in Unit Institution Application Detail",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{local}}api/v1/internal/activity/details/get-person-unit-institution-application?code_unit=UI0002&code_user=IN00001787&date_from=2025-12-12&date_to=2025-12-12",
+                      "host": ["{{local}}api"],
+                      "path": [
+                        "v1",
+                        "internal",
+                        "activity",
+                        "details",
+                        "get-person-unit-institution-application"
+                      ],
+                      "query": [
+                        {
+                          "key": "force",
+                          "value": "true",
+                          "disabled": true
+                        },
+                        {
+                          "key": "code_unit",
+                          "value": "UI0002"
+                        },
+                        {
+                          "key": "code_user",
+                          "value": "IN00001790",
+                          "disabled": true
+                        },
+                        {
+                          "key": "code_user",
+                          "value": "IN00001787"
+                        },
+                        {
+                          "key": "date_from",
+                          "value": "2025-12-12"
+                        },
+                        {
+                          "key": "date_to",
+                          "value": "2025-12-12"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Person in Unit Institution Application only",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{local}}api/v1/internal/activity/details/get-person-unit-institution-application-only?code_unit=UI0001&code_user=IN00001781&status=ALL&date_from=2026-01-15&date_to=2026-01-15",
+                      "host": ["{{local}}api"],
+                      "path": [
+                        "v1",
+                        "internal",
+                        "activity",
+                        "details",
+                        "get-person-unit-institution-application-only"
+                      ],
+                      "query": [
+                        {
+                          "key": "force",
+                          "value": "true",
+                          "disabled": true
+                        },
+                        {
+                          "key": "code_unit",
+                          "value": "UI0001"
+                        },
+                        {
+                          "key": "code_user",
+                          "value": "IN00001781"
+                        },
+                        {
+                          "key": "status",
+                          "value": "ALL"
+                        },
+                        {
+                          "key": "code_user",
+                          "value": "IN00001787",
+                          "disabled": true
+                        },
+                        {
+                          "key": "date_from",
+                          "value": "2026-01-15"
+                        },
+                        {
+                          "key": "date_to",
+                          "value": "2026-01-15"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Person in Unit Institution Activity Daily",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{local}}api/v1/internal/activity/details/get-person-unit-institution-activity?code_unit=UI0001&code_user=IN00001790",
+                      "host": ["{{local}}api"],
+                      "path": [
+                        "v1",
+                        "internal",
+                        "activity",
+                        "details",
+                        "get-person-unit-institution-activity"
+                      ],
+                      "query": [
+                        {
+                          "key": "force",
+                          "value": "true",
+                          "disabled": true
+                        },
+                        {
+                          "key": "code_unit",
+                          "value": "UI0001"
+                        },
+                        {
+                          "key": "code_user",
+                          "value": "IN00001790"
+                        },
+                        {
+                          "key": "date_from",
+                          "value": "2025-02",
+                          "disabled": true
+                        },
+                        {
+                          "key": "date_to",
+                          "value": "2025-02",
+                          "disabled": true
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Person in Unit Institution Activity Monthly",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{local}}api/v1/internal/activity/details/get-person-unit-institution-activity-monthly?code_unit=UI0001&code_user=IN00001781&date_from=2026&date_to=2026",
+                      "host": ["{{local}}api"],
+                      "path": [
+                        "v1",
+                        "internal",
+                        "activity",
+                        "details",
+                        "get-person-unit-institution-activity-monthly"
+                      ],
+                      "query": [
+                        {
+                          "key": "force",
+                          "value": "true",
+                          "disabled": true
+                        },
+                        {
+                          "key": "code_unit",
+                          "value": "UI0001"
+                        },
+                        {
+                          "key": "code_user",
+                          "value": "IN00001781"
+                        },
+                        {
+                          "key": "date_from",
+                          "value": "2026"
+                        },
+                        {
+                          "key": "date_to",
+                          "value": "2026"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Person in Unit Institution Activity Yearly",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{local}}api/v1/internal/activity/details/get-person-unit-institution-activity-yearly?force=true&code_unit=UI0001&code_user=IN00001790&date_from=2024&date_to=2026",
+                      "host": ["{{local}}api"],
+                      "path": [
+                        "v1",
+                        "internal",
+                        "activity",
+                        "details",
+                        "get-person-unit-institution-activity-yearly"
+                      ],
+                      "query": [
+                        {
+                          "key": "force",
+                          "value": "true"
+                        },
+                        {
+                          "key": "code_unit",
+                          "value": "UI0001"
+                        },
+                        {
+                          "key": "code_user",
+                          "value": "IN00001790"
+                        },
+                        {
+                          "key": "date_from",
+                          "value": "2024"
+                        },
+                        {
+                          "key": "date_to",
+                          "value": "2026"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Person in Unit Institution List Application",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{local}}api/v1/internal/activity/details/get-person-unit-institution-list-applications?force=true&code_unit=UI0001&code_user=IN00001790&date_from=2024&date_to=2025",
+                      "host": ["{{local}}api"],
+                      "path": [
+                        "v1",
+                        "internal",
+                        "activity",
+                        "details",
+                        "get-person-unit-institution-list-applications"
+                      ],
+                      "query": [
+                        {
+                          "key": "force",
+                          "value": "true"
+                        },
+                        {
+                          "key": "code_unit",
+                          "value": "UI0001"
+                        },
+                        {
+                          "key": "code_user",
+                          "value": "IN00001790"
+                        },
+                        {
+                          "key": "date_from",
+                          "value": "2024"
+                        },
+                        {
+                          "key": "date_to",
+                          "value": "2025"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Generate Report List Application",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{local}}api/v1/internal/activity/details/get-person-unit-institution-list-applications?force=true&code_unit=UI0001&code_user=IN00001790&date_from=2024&date_to=2024",
+                      "host": ["{{local}}api"],
+                      "path": [
+                        "v1",
+                        "internal",
+                        "activity",
+                        "details",
+                        "get-person-unit-institution-list-applications"
+                      ],
+                      "query": [
+                        {
+                          "key": "force",
+                          "value": "true"
+                        },
+                        {
+                          "key": "code_unit",
+                          "value": "UI0001"
+                        },
+                        {
+                          "key": "code_user",
+                          "value": "IN00001790"
+                        },
+                        {
+                          "key": "date_from",
+                          "value": "2024"
+                        },
+                        {
+                          "key": "date_to",
+                          "value": "2024"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            },
+            {
+              "name": "Agent",
+              "item": [
+                {
+                  "name": "Detail agent",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{local}}api/v1/internal/activity/details/get-request-unit-institution-application?code_unit=UI0003&force=true&period=yearly",
+                      "host": ["{{local}}api"],
+                      "path": [
+                        "v1",
+                        "internal",
+                        "activity",
+                        "details",
+                        "get-request-unit-institution-application"
+                      ],
+                      "query": [
+                        {
+                          "key": "code_unit",
+                          "value": "UI0003"
+                        },
+                        {
+                          "key": "force",
+                          "value": "true"
+                        },
+                        {
+                          "key": "period",
+                          "value": "yearly"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Daily, Monthly, Yearly",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{local}}api/v1/internal/activity/details/get-graph-request-unit-institution-application?code=UI0003&period=monthly&force=true",
+                      "host": ["{{local}}api"],
+                      "path": [
+                        "v1",
+                        "internal",
+                        "activity",
+                        "details",
+                        "get-graph-request-unit-institution-application"
+                      ],
+                      "query": [
+                        {
+                          "key": "code",
+                          "value": "UI0003"
+                        },
+                        {
+                          "key": "period",
+                          "value": "monthly"
+                        },
+                        {
+                          "key": "force",
+                          "value": "true"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Detail Person",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{local}}api/v1/internal/activity/activity/details/get-person-request-unit-institution-application?code_unit=UI0005&code_user=IN00000359&force=true&period=yearly",
+                      "host": ["{{local}}api"],
+                      "path": [
+                        "v1",
+                        "internal",
+                        "activity",
+                        "activity",
+                        "details",
+                        "get-person-request-unit-institution-application"
+                      ],
+                      "query": [
+                        {
+                          "key": "code_unit",
+                          "value": "UI0005"
+                        },
+                        {
+                          "key": "code_user",
+                          "value": "IN00000359"
+                        },
+                        {
+                          "key": "force",
+                          "value": "true"
+                        },
+                        {
+                          "key": "period",
+                          "value": "yearly"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            },
+            {
+              "name": "Get Application Status",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{local}}api/v1/internal/activity/get-application-status",
+                  "host": ["{{local}}api"],
+                  "path": [
+                    "v1",
+                    "internal",
+                    "activity",
+                    "get-application-status"
+                  ],
+                  "query": [
+                    {
+                      "key": "force",
+                      "value": "true",
+                      "disabled": true
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get All Agent Registration",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{local}}api/v1/internal/activity/get-all-agents-registration?force=true",
+                  "host": ["{{local}}api"],
+                  "path": [
+                    "v1",
+                    "internal",
+                    "activity",
+                    "get-all-agents-registration"
+                  ],
+                  "query": [
+                    {
+                      "key": "force",
+                      "value": "true",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get Daily Application Status",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{local}}api/v1/internal/activity/get-daily-application-status?month=2025-09",
+                  "host": ["{{local}}api"],
+                  "path": [
+                    "v1",
+                    "internal",
+                    "activity",
+                    "get-daily-application-status"
+                  ],
+                  "query": [
+                    {
+                      "key": "force",
+                      "value": "true",
+                      "disabled": true
+                    },
+                    {
+                      "key": "month",
+                      "value": "2025-09"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get Weekly Application Status",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{local}}api/v1/internal/activity/get-weekly-application-status?force=true&month=2026-03",
+                  "host": ["{{local}}api"],
+                  "path": [
+                    "v1",
+                    "internal",
+                    "activity",
+                    "get-weekly-application-status"
+                  ],
+                  "query": [
+                    {
+                      "key": "force",
+                      "value": "true"
+                    },
+                    {
+                      "key": "month",
+                      "value": "2026-03"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get Auto Application Status",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{local}}api/v1/internal/activity/get-auto-application-status?force=true&start=2025-09-01&end=2026-03-30&group_by=day",
+                  "host": ["{{local}}api"],
+                  "path": [
+                    "v1",
+                    "internal",
+                    "activity",
+                    "get-auto-application-status"
+                  ],
+                  "query": [
+                    {
+                      "key": "force",
+                      "value": "true"
+                    },
+                    {
+                      "key": "start",
+                      "value": "2025-09-01"
+                    },
+                    {
+                      "key": "end",
+                      "value": "2026-03-30"
+                    },
+                    {
+                      "key": "group_by",
+                      "value": "day"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get Monthly Application Status",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{local}}api/v1/internal/activity/get-monthly-application-status?year=2025",
+                  "host": ["{{local}}api"],
+                  "path": [
+                    "v1",
+                    "internal",
+                    "activity",
+                    "get-monthly-application-status"
+                  ],
+                  "query": [
+                    {
+                      "key": "force",
+                      "value": "true",
+                      "disabled": true
+                    },
+                    {
+                      "key": "year",
+                      "value": "2025"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get Yearly Application Status",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{local}}api/v1/internal/activity/get-yearly-application-status",
+                  "host": ["{{local}}api"],
+                  "path": [
+                    "v1",
+                    "internal",
+                    "activity",
+                    "get-yearly-application-status"
+                  ],
+                  "query": [
+                    {
+                      "key": "force",
+                      "value": "true",
+                      "disabled": true
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get Daily Unit Institution Application",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{local}}api/v1/internal/activity/get-daily-unit-institution-application?year=2025-09&code=UI0003&force=true",
+                  "host": ["{{local}}api"],
+                  "path": [
+                    "v1",
+                    "internal",
+                    "activity",
+                    "get-daily-unit-institution-application"
+                  ],
+                  "query": [
+                    {
+                      "key": "year",
+                      "value": "2025-09"
+                    },
+                    {
+                      "key": "code",
+                      "value": "UI0003"
+                    },
+                    {
+                      "key": "force",
+                      "value": "true"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get Monthly Unit Institution Application",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{local}}api/v1/internal/activity/get-monthly-unit-institution-application?code=UI0001&year=2025",
+                  "host": ["{{local}}api"],
+                  "path": [
+                    "v1",
+                    "internal",
+                    "activity",
+                    "get-monthly-unit-institution-application"
+                  ],
+                  "query": [
+                    {
+                      "key": "force",
+                      "value": "true",
+                      "disabled": true
+                    },
+                    {
+                      "key": "code",
+                      "value": "UI0001"
+                    },
+                    {
+                      "key": "year",
+                      "value": "2025"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get Yearly Unit Institution Application",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{local}}api/v1/internal/activity/get-yearly-unit-institution-application?code=UI0044",
+                  "host": ["{{local}}api"],
+                  "path": [
+                    "v1",
+                    "internal",
+                    "activity",
+                    "get-yearly-unit-institution-application"
+                  ],
+                  "query": [
+                    {
+                      "key": "force",
+                      "value": "true",
+                      "disabled": true
+                    },
+                    {
+                      "key": "code",
+                      "value": "UI0044"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Unit Officer Performance",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{local}}api/v1/internal/activity/unit-internal-users-performance?force=true",
+                  "host": ["{{local}}api"],
+                  "path": [
+                    "v1",
+                    "internal",
+                    "activity",
+                    "unit-internal-users-performance"
+                  ],
+                  "query": [
+                    {
+                      "key": "force",
+                      "value": "true"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Performance Debug",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{local}}api/v1/internal/activity/users-with-activity",
+                  "host": ["{{local}}api"],
+                  "path": ["v1", "internal", "activity", "users-with-activity"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get Total Unit Institution Application",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{local}}api/v1/internal/activity/get-total-unit-institution-application?force=true",
+                  "host": ["{{local}}api"],
+                  "path": [
+                    "v1",
+                    "internal",
+                    "activity",
+                    "get-total-unit-institution-application"
+                  ],
+                  "query": [
+                    {
+                      "key": "force",
+                      "value": "true"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get Total Unit Institution Application Detail",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{local}}api/v1/internal/activity/details/get-total-unit-institution-application?code_unit=UI0044",
+                  "host": ["{{local}}api"],
+                  "path": [
+                    "v1",
+                    "internal",
+                    "activity",
+                    "details",
+                    "get-total-unit-institution-application"
+                  ],
+                  "query": [
+                    {
+                      "key": "force",
+                      "value": "true",
+                      "disabled": true
+                    },
+                    {
+                      "key": "code_unit",
+                      "value": "UI0044"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get Today Unit Institution Application",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{local}}api/v1/internal/activity/get-today-unit-institution-application?force=true&start=10-11-2025&end=11-11-2025&code=UI0001",
+                  "host": ["{{local}}api"],
+                  "path": [
+                    "v1",
+                    "internal",
+                    "activity",
+                    "get-today-unit-institution-application"
+                  ],
+                  "query": [
+                    {
+                      "key": "force",
+                      "value": "true"
+                    },
+                    {
+                      "key": "start",
+                      "value": "10-11-2025"
+                    },
+                    {
+                      "key": "end",
+                      "value": "11-11-2025"
+                    },
+                    {
+                      "key": "code",
+                      "value": "UI0001"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ALL Reports",
+      "item": [
+        {
+          "name": "Report",
+          "item": [
+            {
+              "name": "Get All Province Registration",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{local}}api/v1/internal/allreport/get-detail-applications?page=1&pageSize=1&forceRefresh=false",
+                  "host": ["{{local}}api"],
+                  "path": [
+                    "v1",
+                    "internal",
+                    "allreport",
+                    "get-detail-applications"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "1"
+                    },
+                    {
+                      "key": "code",
+                      "value": "AP00275922",
+                      "type": "text",
+                      "disabled": true
+                    },
+                    {
+                      "key": "forceRefresh",
+                      "value": "false",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get All Province Registration Copy",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{local}}api/v1/internal/allreport/get-detail-applications?page=1&pageSize=1&forceRefresh=false",
+                  "host": ["{{local}}api"],
+                  "path": [
+                    "v1",
+                    "internal",
+                    "allreport",
+                    "get-detail-applications"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "1"
+                    },
+                    {
+                      "key": "code",
+                      "value": "AP00275922",
+                      "type": "text",
+                      "disabled": true
+                    },
+                    {
+                      "key": "forceRefresh",
+                      "value": "false",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Application Referral Details",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{local}}api/v1/internal/allreport/get-referral-details?page=1&pageSize=1&forceRefresh=false",
+                  "host": ["{{local}}api"],
+                  "path": [
+                    "v1",
+                    "internal",
+                    "allreport",
+                    "get-referral-details"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "1"
+                    },
+                    {
+                      "key": "forceRefresh",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "get agent report",
+              "event": [
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "exec": [""],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{local}}api/v1/internal/allreport/get-agents-report?force=true&search=SOPHEAKTRA&sortOrder=ASC &agent=ABA",
+                  "host": ["{{local}}api"],
+                  "path": ["v1", "internal", "allreport", "get-agents-report"],
+                  "query": [
+                    {
+                      "key": "force",
+                      "value": "true"
+                    },
+                    {
+                      "key": "page",
+                      "value": "10",
+                      "type": "text",
+                      "disabled": true
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10",
+                      "type": "text",
+                      "disabled": true
+                    },
+                    {
+                      "key": "search",
+                      "value": "SOPHEAKTRA"
+                    },
+                    {
+                      "key": "sortOrder",
+                      "value": "ASC "
+                    },
+                    {
+                      "key": "agent",
+                      "value": "ABA",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get agent report file",
+              "event": [
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "exec": [""],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{local}}api/v1/internal/allreport/agents-export-excel?search=true&sortOrder=ASC &agent=ABA",
+                  "host": ["{{local}}api"],
+                  "path": [
+                    "v1",
+                    "internal",
+                    "allreport",
+                    "agents-export-excel"
+                  ],
+                  "query": [
+                    {
+                      "key": "search",
+                      "value": "true"
+                    },
+                    {
+                      "key": "sortOrder",
+                      "value": "ASC "
+                    },
+                    {
+                      "key": "agent",
+                      "value": "ABA"
+                    },
+                    {
+                      "key": "",
+                      "value": null,
+                      "type": "text",
+                      "disabled": true
+                    }
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Files",
+          "item": [
+            {
+              "name": "Get all files",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{local}}api/v1/internal/report/files/get-all-file-reports",
+                  "host": ["{{local}}api"],
+                  "path": [
+                    "v1",
+                    "internal",
+                    "report",
+                    "files",
+                    "get-all-file-reports"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Download file by ID",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{local}}api/v1/internal/report/files/download-by-id/1",
+                  "host": ["{{local}}api"],
+                  "path": [
+                    "v1",
+                    "internal",
+                    "report",
+                    "files",
+                    "download-by-id",
+                    "1"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Export file by month",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{local}}api/v1/internal/report/files/export-by-month?month=2026-01-01",
+                  "host": ["{{local}}api"],
+                  "path": [
+                    "v1",
+                    "internal",
+                    "report",
+                    "files",
+                    "export-by-month"
+                  ],
+                  "query": [
+                    {
+                      "key": "month",
+                      "value": "2026-01-01"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get Status export",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{local}}api/v1/internal/report/files/status/1",
+                  "host": ["{{local}}api"],
+                  "path": ["v1", "internal", "report", "files", "status", "1"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Download file",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{local}}api/v1/internal/report/files/download/IE_MISTI_MASTER/ie_report_2026_02.csv",
+                  "host": ["{{local}}api"],
+                  "path": [
+                    "v1",
+                    "internal",
+                    "report",
+                    "files",
+                    "download",
+                    "IE_MISTI_MASTER",
+                    "ie_report_2026_02.csv"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Download file Copy",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{local}}api/v1/internal/report/files/download/IE_MISTI_MASTER/ie_report_2026_02.csv",
+                  "host": ["{{local}}api"],
+                  "path": [
+                    "v1",
+                    "internal",
+                    "report",
+                    "files",
+                    "download",
+                    "IE_MISTI_MASTER",
+                    "ie_report_2026_02.csv"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Download file Copy",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{local}}api/v1/internal/report/files/download-by-id/report.csv",
+                  "host": ["{{local}}api"],
+                  "path": [
+                    "v1",
+                    "internal",
+                    "report",
+                    "files",
+                    "download-by-id",
+                    "report.csv"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "name": "Open api",
+      "item": [
+        {
+          "name": "New Folder",
+          "item": [
+            {
+              "name": "6_get-dashboard-daily-registration",
+              "event": [
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "exec": [""],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "x-road-client",
+                    "value": "CAMBODIA/COM/CAMDX-000029/ACLEDA-IE-API-CLIENT",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{local}}api/v1/open-api/report/report-dashboard/get-dashboard-daily-registration",
+                  "host": ["{{local}}api"],
+                  "path": [
+                    "v1",
+                    "open-api",
+                    "report",
+                    "report-dashboard",
+                    "get-dashboard-daily-registration"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "5_get-all-sectors-registration",
+              "event": [
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "exec": [""],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "x-road-client",
+                    "value": "CAMBODIA/COM/CAMDX-000029/ACLEDA-IE-API-CLIENT",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{local}}api/v1/open-api/report/get-all-sectors-registration",
+                  "host": ["{{local}}api"],
+                  "path": [
+                    "v1",
+                    "open-api",
+                    "report",
+                    "get-all-sectors-registration"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "4_get-all-provinces-registration",
+              "event": [
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "exec": [""],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "x-road-client",
+                    "value": "CAMBODIA/COM/CAMDX-000029/ACLEDA-IE-API-CLIENT",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{local}}api/v1/open-api/report/get-all-provinces-registration",
+                  "host": ["{{local}}api"],
+                  "path": [
+                    "v1",
+                    "open-api",
+                    "report",
+                    "get-all-provinces-registration"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "3_get-all-applications-status",
+              "event": [
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "exec": [""],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "x-road-client",
+                    "value": "CAMBODIA/COM/CAMDX-000029/ACLEDA-IE-API-CLIENT",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{local}}api/v1/open-api/report/get-all-applications-status",
+                  "host": ["{{local}}api"],
+                  "path": [
+                    "v1",
+                    "open-api",
+                    "report",
+                    "get-all-applications-status"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "2_get-all-methods-registration",
+              "event": [
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "exec": [""],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "x-road-client",
+                    "value": "CAMBODIA/COM/CAMDX-000029/ACLEDA-IE-API-CLIENT",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{local}}api/v1/open-api/report/get-all-methods-registration",
+                  "host": ["{{local}}api"],
+                  "path": [
+                    "v1",
+                    "open-api",
+                    "report",
+                    "get-all-methods-registration"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "1_get-total-dashboard-registration",
+              "event": [
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "exec": [""],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "x-road-client",
+                    "value": "CAMBODIA/COM/CAMDX-000029/ACLEDA-IE-API-CLIENT",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{local}}api/v1/open-api/report-dashboard/get-total-dashboard-registration",
+                  "host": ["{{local}}api"],
+                  "path": [
+                    "v1",
+                    "open-api",
+                    "report-dashboard",
+                    "get-total-dashboard-registration"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "verification status application",
+              "event": [
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "exec": [""],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "x-road-client",
+                    "value": "CAMBODIA/COM/CAMDX-000029/ACLEDA-IE-API-CLIENT",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{local}}api/v1/open-api/verification",
+                  "host": ["{{local}}api"],
+                  "path": ["v1", "open-api", "verification"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "get agent report",
+              "event": [
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "exec": [
+                      "const CryptoJS = require(\"crypto-js\");\r",
+                      "\r",
+                      "const apiKey = \"IE_REPORT\";\r",
+                      "const secret = \"SUPER_REPORT_IE\";\r",
+                      "\r",
+                      "// 1) Extract body EXACTLY as JSON\r",
+                      "let bodyObj = {};\r",
+                      "if (pm.request.body && pm.request.body.mode === \"raw\") {\r",
+                      "    try {\r",
+                      "        bodyObj = JSON.parse(pm.request.body.raw);\r",
+                      "    } catch (e) {\r",
+                      "        bodyObj = {};\r",
+                      "    }\r",
+                      "}\r",
+                      "\r",
+                      "// 2) Canonical JSON to match NestJS\r",
+                      "const payloadJson = JSON.stringify(bodyObj);\r",
+                      "\r",
+                      "// 3) Timestamp (seconds)\r",
+                      "const timestamp = Math.floor(Date.now() / 1000).toString();\r",
+                      "\r",
+                      "// 4) HMAC(payloadJson + timestamp)\r",
+                      "const dataToSign = payloadJson + timestamp;\r",
+                      "\r",
+                      "const signature = CryptoJS.HmacSHA256(\r",
+                      "    dataToSign,\r",
+                      "    secret\r",
+                      ").toString(CryptoJS.enc.Hex);\r",
+                      "\r",
+                      "// 5) Set headers\r",
+                      "pm.request.headers.upsert({ key: \"x-api-key\", value: apiKey });\r",
+                      "pm.request.headers.upsert({ key: \"x-timestamp\", value: timestamp });\r",
+                      "pm.request.headers.upsert({ key: \"x-signature\", value: signature });\r",
+                      "\r",
+                      "// Debug\r",
+                      "console.log(\"payloadJson:\", payloadJson);\r",
+                      "console.log(\"timestamp:\", timestamp);\r",
+                      "console.log(\"dataToSign:\", dataToSign);\r",
+                      "console.log(\"signature:\", signature);\r",
+                      ""
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{local}}api/v1/open-api-ie/report/get-agents-report?force=true",
+                  "host": ["{{local}}api"],
+                  "path": ["v1", "open-api-ie", "report", "get-agents-report"],
+                  "query": [
+                    {
+                      "key": "force",
+                      "value": "true",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "New Request",
+              "request": {
+                "method": "GET",
+                "header": []
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "all report",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  "const CryptoJS = require(\"crypto-js\");\r",
+                  "\r",
+                  "const apiKey = \"PARTNER_KEY_123\";\r",
+                  "const secret = \"SUPER_SECRET_123\";\r",
+                  "\r",
+                  "// 1) Extract body EXACTLY as JSON\r",
+                  "let bodyObj = {};\r",
+                  "if (pm.request.body && pm.request.body.mode === \"raw\") {\r",
+                  "    try {\r",
+                  "        bodyObj = JSON.parse(pm.request.body.raw);\r",
+                  "    } catch (e) {\r",
+                  "        bodyObj = {};\r",
+                  "    }\r",
+                  "}\r",
+                  "\r",
+                  "// 2) Canonical JSON to match NestJS\r",
+                  "const payloadJson = JSON.stringify(bodyObj);\r",
+                  "\r",
+                  "// 3) Timestamp (seconds)\r",
+                  "const timestamp = Math.floor(Date.now() / 1000).toString();\r",
+                  "\r",
+                  "// 4) HMAC(payloadJson + timestamp)\r",
+                  "const dataToSign = payloadJson + timestamp;\r",
+                  "\r",
+                  "const signature = CryptoJS.HmacSHA256(\r",
+                  "    dataToSign,\r",
+                  "    secret\r",
+                  ").toString(CryptoJS.enc.Hex);\r",
+                  "\r",
+                  "// 5) Set headers\r",
+                  "pm.request.headers.upsert({ key: \"x-api-key\", value: apiKey });\r",
+                  "pm.request.headers.upsert({ key: \"x-timestamp\", value: timestamp });\r",
+                  "pm.request.headers.upsert({ key: \"x-signature\", value: signature });\r",
+                  "\r",
+                  "// Debug\r",
+                  "console.log(\"payloadJson:\", payloadJson);\r",
+                  "console.log(\"timestamp:\", timestamp);\r",
+                  "console.log(\"dataToSign:\", dataToSign);\r",
+                  "console.log(\"signature:\", signature);\r",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{local}}api/v1/internal/open-api/report/get-all-provinces-registration-by-application-type?page=1&pageSize=1&fromDate&toDate&code",
+              "host": ["{{local}}api"],
+              "path": [
+                "v1",
+                "internal",
+                "open-api",
+                "report",
+                "get-all-provinces-registration-by-application-type"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "pageSize",
+                  "value": "1"
+                },
+                {
+                  "key": "fromDate",
+                  "value": null,
+                  "type": "text"
+                },
+                {
+                  "key": "toDate",
+                  "value": null,
+                  "type": "text"
+                },
+                {
+                  "key": "code",
+                  "value": null,
+                  "type": "text"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Informal Economy Data",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [""],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "x-road-client",
+                "value": "CAMBODIA/COM/CAMDX-000029/ACLEDA-IE-API-CLIENT",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{local}}api/v1/open-api/allreport/get-detail-applications?page=1&pageSize=1",
+              "host": ["{{local}}api"],
+              "path": [
+                "v1",
+                "open-api",
+                "allreport",
+                "get-detail-applications"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "pageSize",
+                  "value": "1"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}

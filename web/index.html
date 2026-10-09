@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CAM-IE · Registration Forecast</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<style>
+  :root{
+    --bg:#f6f7f9; --card:#ffffff; --ink:#14181f; --muted:#5b6472; --line:#e4e7ec;
+    --actual:#1f3a5f; --fc:#0e8a7e; --band:rgba(14,138,126,.14); --accent:#0e8a7e;
+  }
+  *{box-sizing:border-box} body{margin:0;font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--ink);font-size:14px}
+  header{padding:20px 32px;border-bottom:1px solid var(--line);background:var(--card);display:flex;align-items:center;gap:14px}
+  .logo{width:34px;height:34px;border-radius:8px;background:var(--actual);display:grid;place-items:center}
+  h1{font-size:18px;margin:0;font-weight:600} .sub{color:var(--muted);font-size:13px}
+  main{max-width:1240px;margin:0 auto;padding:24px 32px 48px}
+  .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:18px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+  .kpi .label{color:var(--muted);font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.04em}
+  .kpi .value{font-size:26px;font-weight:700;margin-top:6px;font-variant-numeric:tabular-nums}
+  .kpi .range{color:var(--muted);font-size:12px;margin-top:2px;font-variant-numeric:tabular-nums}
+  .toolbar{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;margin-bottom:10px}
+  .seg{display:inline-flex;border:1px solid var(--line);border-radius:9px;overflow:hidden;background:#fff}
+  .seg button{border:0;background:none;padding:8px 14px;font:inherit;font-weight:500;color:var(--muted);cursor:pointer}
+  .seg button.on{background:var(--actual);color:#fff}
+  .ctrl{display:flex;gap:16px;align-items:center;flex-wrap:wrap;color:var(--muted)}
+  select{font:inherit;padding:7px 10px;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--ink)}
+  input[type=range]{accent-color:var(--accent);width:150px}
+  .legend{display:flex;gap:18px;color:var(--muted);font-size:12px;margin:4px 0 10px}
+  .sw{display:inline-block;width:18px;height:3px;vertical-align:middle;margin-right:6px;border-radius:2px}
+  .chartbox{position:relative;height:420px}
+  .grid2{display:grid;grid-template-columns:1.1fr 1fr;gap:14px;margin-top:18px}
+  h2{font-size:15px;margin:0 0 12px;font-weight:600}
+  table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+  th,td{text-align:left;padding:9px 8px;border-bottom:1px solid var(--line)} th{color:var(--muted);font-weight:500;font-size:12px}
+  .models li{margin-bottom:10px;line-height:1.5} .models b{color:var(--actual)}
+  .note{color:var(--muted);font-size:12px;margin-top:10px}
+  .mono{font-family:'JetBrains Mono',monospace;font-size:12px}
+  .status{margin-left:auto;display:flex;align-items:center;gap:8px;font-size:12px;font-weight:500;padding:6px 12px;border-radius:99px;border:1px solid var(--line);background:#fafbfc;color:var(--muted)}
+  .status .dot{width:8px;height:8px;border-radius:50%;background:#0e7a4f}
+  .status.fallback .dot{background:#d97706} .status b{color:var(--ink);font-weight:600}
+  .banner{background:#fff7e6;border-bottom:1px solid #f3d9a4;color:#7a4b00;padding:10px 32px;font-size:13px}
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px}
+  .stat{border:1px solid var(--line);border-radius:10px;padding:10px 12px} .stat .k{color:var(--muted);font-size:12px} .stat .v{font-size:20px;font-weight:700;margin-top:2px;font-variant-numeric:tabular-nums}
+  .btn{font:inherit;font-weight:500;border:1px solid var(--line);background:#fff;color:var(--ink);padding:7px 12px;border-radius:8px;cursor:pointer}
+  .btn:hover{border-color:#c9ced6} .btn:focus-visible,.seg button:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  select:disabled{opacity:.5}
+  .tablewrap{max-height:320px;overflow:auto;margin-top:14px;border:1px solid var(--line);border-radius:10px;display:none}
+  .tablewrap.open{display:block} .tablewrap table th{position:sticky;top:0;background:#fafbfc}
+  .tablewrap td.num,.tablewrap th.num{text-align:right} .tag{font-size:11px;padding:2px 7px;border-radius:99px}
+  .tag.actual{background:#e8edf4;color:var(--actual)} .tag.forecast{background:#e6f4f2;color:var(--accent)} .tag.partial{background:#fff4e0;color:#8a5a00}
+  .foot{display:flex;justify-content:space-between;align-items:center;margin-top:10px;gap:10px;flex-wrap:wrap}
+  .kpi .delta{font-size:12px;font-weight:600;margin-left:8px;vertical-align:middle;white-space:nowrap;display:inline-block} .up{color:#0e7a4f} .down{color:#b4232a}
+  @media(max-width:900px){.kpis{grid-template-columns:repeat(2,1fr)}.toolbar{flex-direction:column;align-items:flex-start}.chartbox{height:340px}.kpi .value{font-size:21px}.kpi .delta{margin-left:4px;font-size:11px}.legend{flex-wrap:wrap;gap:8px 14px}header{padding:16px}.kpis{gap:10px}.grid2{grid-template-columns:1fr}main{padding:16px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo" aria-label="CAM-IE logo">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"><path d="M3 17l5-5 4 3 4-6"/><path d="M16 9l5-4" stroke-dasharray="2 2.5"/></svg>
+  </div>
+  <div><h1>CAM-IE Registration Forecast</h1><div class="sub" id="meta">Loading…</div></div>
+  <div class="status" id="status" role="status"></div>
+</header>
+<div class="banner" id="banner" role="alert" hidden></div>
+<main>
+  <section class="kpis" id="kpis"></section>
+
+  <section class="card">
+    <div class="toolbar">
+      <div class="seg" id="gran">
+        <button data-g="daily">Daily</button><button data-g="monthly" class="on">Monthly</button><button data-g="yearly">Yearly</button>
+      </div>
+      <div class="ctrl">
+        <label>Horizon <input type="range" id="horizon"> <span id="hval" class="mono"></span></label>
+        <label><input type="checkbox" id="band" checked> 80% interval</label>
+      </div>
+    </div>
+    <div class="legend" id="legend"></div>
+    <div class="chartbox"><canvas id="chart" role="img" aria-label="Registration forecast chart"></canvas></div>
+    <div class="foot">
+      <span class="note" id="caption" style="margin:0"></span>
+      <span><button class="btn" id="toggleTable" aria-expanded="false">Show data</button> <button class="btn" id="csv">Download CSV</button></span>
+    </div>
+    <div class="tablewrap" id="tablewrap"><table id="datatable"></table></div>
+  </section>
+
+  <section class="grid2">
+    <div class="card">
+      <h2>Model accuracy</h2>
+      <div class="stats" id="stats"></div>
+      <p class="note" style="margin-top:0">Checked nightly: the model forecasts 30 days from three past dates and is compared with what actually happened. WAPE = Σ|actual − forecast| / Σ actual (lower is better). Range coverage should be close to 80%.</p>
+    </div>
+    <div class="card models">
+      <h2>How this forecast is made</h2>
+      <p style="margin:0 0 10px;line-height:1.55"><b>TimesFM 2.5 (Google)</b> — a 200M-parameter pretrained time-series foundation model. It reads up to 2,048 days of registration history and forecasts each future day with a 10th–90th percentile range, without any training on CAM-IE data. Monthly and yearly totals are the sum of the daily forecasts, so all three views agree.</p>
+      <p style="margin:0;line-height:1.55"><b>Automatic backup: Holt-Winters ETS.</b> If TimesFM can’t load, errors, or returns an implausible forecast (empty, near zero, or far above recent levels), the nightly job switches to ETS automatically so the graph is never blank. The badge in the header shows which model produced the current forecast.</p>
+      <p class="note">Real-time forecasts powered by live CAM-IE reports and Google TimesFM.</p>
+    </div>
+  </section>
+</main>
+<script>
+const fmt = n => n == null ? '—' : Math.round(n).toLocaleString('en-US');
+const NAMES = {timesfm:'TimesFM 2.5', ets:'Holt-Winters ETS (backup)'};
+const C = {actual:'#1f3a5f', fc:'#0e8a7e', fcBar:'rgba(14,138,126,.30)', fcBarEdge:'#0e8a7e', band:'rgba(14,138,126,.14)', whisker:'#0b6f65'};
+const HZ = {daily:{min:7,max:180,unit:'days'}, monthly:{min:3,max:26,unit:'months'}, yearly:{min:1,max:2,unit:'years'}};
+const state = {g:'monthly', band:true, horizon:{daily:90,monthly:12,yearly:2}};
+let RUN, chart, VIEW = [];
+
+fetch('forecast.json').then(r => r.json()).then(run => { RUN = run; init(); });
+
+function init(){
+  document.getElementById('meta').textContent =
+    `Last actual: ${RUN.last_actual_date} · Run ${RUN.forecast_run_id.slice(0,8)} · Generated ${RUN.generated_at.replace('T',' ').replace('+00:00',' UTC')}`;
+  document.querySelectorAll('#gran button').forEach(b => b.onclick = () => {
+    state.g = b.dataset.g; document.querySelectorAll('#gran button').forEach(x => x.classList.toggle('on', x===b)); syncHorizon(); render();
+  });
+  document.getElementById('band').onchange = e => { state.band = e.target.checked; render(); };
+  document.getElementById('horizon').oninput = e => { state.horizon[state.g] = +e.target.value; label(); render(); };
+  const tw = document.getElementById('tablewrap'), tb = document.getElementById('toggleTable');
+  tb.onclick = () => { const o = tw.classList.toggle('open'); tb.textContent = o ? 'Hide data' : 'Show data'; tb.setAttribute('aria-expanded', o); };
+  document.getElementById('csv').onclick = downloadCSV;
+  syncHorizon(); status(); accuracy(); kpis(); render();
+}
+function syncHorizon(){ const h = HZ[state.g], el = document.getElementById('horizon'); el.min = h.min; el.max = h.max; el.value = state.horizon[state.g]; label(); }
+function label(){ document.getElementById('hval').textContent = `${state.horizon[state.g]} ${HZ[state.g].unit}`; }
+
+function rows(){
+  const all = RUN.series[state.g];
+  const hist = all.filter(r => r.type !== 'forecast');
+  const fut = all.filter(r => r.type === 'forecast').slice(0, state.horizon[state.g]);
+  return (state.g === 'daily' ? hist.slice(-120) : hist).concat(fut);
+}
+
+// --- plugins -------------------------------------------------------------
+const todayLine = {
+  id:'todayLine',
+  afterDatasetsDraw(c){
+    const idx = VIEW.findIndex(r => r.type !== 'actual'); if (idx < 0) return;
+    const x = c.scales.x, {top, bottom} = c.chartArea;
+    const px = state.g === 'daily' ? (x.getPixelForValue(idx-1) + x.getPixelForValue(idx)) / 2
+                                   : x.getPixelForValue(idx) - (x.getPixelForValue(1) - x.getPixelForValue(0)) / 2;
+    const ctx = c.ctx; ctx.save();
+    ctx.strokeStyle = '#8b94a3'; ctx.setLineDash([3,3]); ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(px, top); ctx.lineTo(px, bottom); ctx.stroke();
+    ctx.setLineDash([]); ctx.fillStyle = '#5b6472'; ctx.font = '500 11px Inter, sans-serif';
+    ctx.textAlign = 'left'; ctx.fillText(`Today · ${RUN.last_actual_date}`, px + 6, top + 12);
+    ctx.restore();
+  }
+};
+const whiskers = {
+  id:'whiskers',
+  afterDatasetsDraw(c){
+    if (!state.band || state.g === 'daily') return;
+    const y = c.scales.y, meta = c.getDatasetMeta(1); const ctx = c.ctx; ctx.save();
+    ctx.strokeStyle = C.whisker; ctx.lineWidth = 1.4;
+    VIEW.forEach((r,i) => {
+      if (r.lower == null || !meta.data[i]) return;
+      const x = meta.data[i].x, w = Math.min(10, meta.data[i].width/4 || 8);
+      const y1 = y.getPixelForValue(r.lower), y2 = y.getPixelForValue(r.upper);
+      ctx.beginPath(); ctx.moveTo(x, y1); ctx.lineTo(x, y2);
+      ctx.moveTo(x-w, y1); ctx.lineTo(x+w, y1); ctx.moveTo(x-w, y2); ctx.lineTo(x+w, y2); ctx.stroke();
+    });
+    ctx.restore();
+  }
+};
+
+// --- chart ---------------------------------------------------------------
+function render(){
+  VIEW = rows();
+  const labels = VIEW.map(r => r.date), isBar = state.g !== 'daily';
+  const lastA = VIEW.map(r => r.type).lastIndexOf('actual');
+  const bridge = (r,i,k) => r[k] ?? (!isBar && i === lastA ? r.actual : null);
+  let ds;
+  if (isBar){
+    ds = [
+      {label:'Actual', data:VIEW.map(r => r.actual), backgroundColor:C.actual, stack:'s', borderRadius:3, maxBarThickness:44, order:2},
+      {label:'Forecast',
+       data:VIEW.map(r => r.type==='actual' ? null : r.forecast - (r.actual||0)),
+       backgroundColor:C.fcBar, borderColor:C.fcBarEdge, borderWidth:{top:1.5,left:0,right:0,bottom:0}, borderDash:[4,3],
+       stack:'s', borderRadius:3, maxBarThickness:44, order:2},
+    ];
+  } else {
+    ds = [
+      {label:'Upper', data:VIEW.map((r,i)=>bridge(r,i,'upper')), borderWidth:0, pointRadius:0, backgroundColor:C.band, fill:'+1', hidden:!state.band, order:3},
+      {label:'Lower', data:VIEW.map((r,i)=>bridge(r,i,'lower')), borderWidth:0, pointRadius:0, fill:false, hidden:!state.band, order:3},
+      {label:'Actual', data:VIEW.map(r => r.actual), borderColor:C.actual, borderWidth:1.8, pointRadius:0, fill:false, tension:.2, order:2},
+    ];
+    ds.push({label:'Forecast', data:VIEW.map((r,i)=>bridge(r,i,'forecast')), borderColor:C.fc, borderDash:[6,4], borderWidth:2.2, pointRadius:0, fill:false, tension:.25, order:1});
+  }
+  const tops = ds.flatMap(d => d.label==='Lower' ? [] : d.data).filter(v => v != null);
+  if (state.band) VIEW.forEach(r => r.upper != null && tops.push(r.upper));
+  const yMax = Math.max(...tops) * 1.06;
+  legend();
+  if (chart) chart.destroy();
+  chart = new Chart(document.getElementById('chart'), {
+    type: isBar ? 'bar' : 'line',
+    data:{labels, datasets:ds},
+    plugins:[todayLine, whiskers],
+    options:{
+      responsive:true, maintainAspectRatio:false, animation:{duration:250}, interaction:{mode:'index', intersect:false},
+      plugins:{legend:{display:false}, tooltip:{
+        filter:i => !['Upper','Lower'].includes(i.dataset.label) && i.raw != null,
+        callbacks:{
+          title: items => { const r = VIEW[items[0].dataIndex]; return `${r.date}${r.type==='partial' ? '  ·  in progress' : r.type==='forecast' ? '  ·  forecast' : ''}`; },
+          label: i => {
+            const r = VIEW[i.dataIndex];
+            if (isBar && i.datasetIndex === 1) return r.type==='partial' ? `Projected remainder: ${fmt(i.raw)}  (total ${fmt(r.forecast)})` : `Forecast: ${fmt(i.raw)}`;
+            if (isBar && i.datasetIndex === 0 && r.type==='partial') return `Actual to date: ${fmt(i.raw)}`;
+            return `${i.dataset.label}: ${fmt(i.raw)}`;
+          },
+          afterBody: items => {
+            const r = VIEW[items[0].dataIndex], out = [];
+            if (r.lower != null) out.push(`80% range: ${fmt(r.lower)} – ${fmt(r.upper)}`);
+            const yoy = yoyOf(items[0].dataIndex); if (yoy != null) out.push(`vs same period last year: ${yoy>0?'+':''}${yoy.toFixed(1)}%`);
+            return out;
+          }
+        }}},
+      scales:{
+        x:{stacked:isBar, grid:{display:false}, ticks:{color:'#5b6472', maxRotation:0, autoSkip:true, maxTicksLimit:state.g==='daily'?10:14}},
+        y:{stacked:isBar, beginAtZero:true, suggestedMax:yMax, grid:{color:'#eef0f3'}, ticks:{color:'#5b6472', callback:v => v.toLocaleString('en-US')},
+           title:{display:true, text:`Registrations per ${state.g==='daily'?'day':state.g==='monthly'?'month':'year'}`, color:'#5b6472'}}
+      }
+    }
+  });
+  caption(); table();
+}
+
+function valueOf(r){ return r.type==='actual' ? r.actual : r.forecast; }
+function yoyOf(i){
+  const lag = state.g==='daily' ? 364 : state.g==='monthly' ? 12 : 1;
+  const all = RUN.series[state.g], r = VIEW[i], j = all.findIndex(x => x.date === r.date);
+  if (j - lag < 0) return null; const prev = valueOf(all[j-lag]); return prev ? (valueOf(r)/prev - 1)*100 : null;
+}
+
+function legend(){
+  const sw = (bg, extra='') => `<i class="sw" style="background:${bg};${extra}"></i>`;
+  const dash = c => `repeating-linear-gradient(90deg,${c} 0 5px,transparent 5px 8px)`;
+  let h = `<span>${sw(C.actual)}Actual</span>`;
+  if (state.g==='daily'){
+    h += `<span>${sw(dash(C.fc))}Forecast</span>` + (state.band ? `<span>${sw(C.band,'height:10px')}80% prediction interval</span>` : '');
+  } else {
+    h += `<span>${sw(C.fcBar,'height:10px;border-top:1.5px dashed '+C.fcBarEdge)}Forecast (incl. rest of current period)</span>` +
+         (state.band ? `<span>${sw(C.whisker,'width:2px;height:12px')}80% prediction interval</span>` : '');
+  }
+  document.getElementById('legend').innerHTML = h;
+}
+
+function caption(){
+  const f = VIEW.filter(r => r.type !== 'actual');
+  const tot = f.reduce((a,r) => a + r.forecast - (r.actual||0), 0);
+  const who = NAMES[RUN.model];
+  document.getElementById('caption').textContent =
+    `${who}: ${fmt(tot)} registrations expected over the next ${state.horizon[state.g]} ${HZ[state.g].unit}${state.g!=='daily'?' (plus the rest of the current period)':''}.`;
+}
+
+function table(){
+  const rows = VIEW.slice().reverse();
+  document.getElementById('datatable').innerHTML =
+    `<thead><tr><th>Period</th><th>Type</th><th class="num">Actual</th><th class="num">Forecast</th><th class="num">Low (10%)</th><th class="num">High (90%)</th></tr></thead><tbody>` +
+    rows.map(r => `<tr><td>${r.date}</td><td><span class="tag ${r.type}">${r.type}</span></td><td class="num">${fmt(r.actual)}</td><td class="num">${fmt(r.forecast)}</td><td class="num">${fmt(r.lower)}</td><td class="num">${fmt(r.upper)}</td></tr>`).join('') + '</tbody>';
+}
+
+function downloadCSV(){
+  const head = 'period,type,actual,forecast,lower_10,upper_90,model,granularity';
+  const lines = VIEW.map(r => [r.date, r.type, r.actual??'', r.forecast??'', r.lower??'', r.upper??'', RUN.model, state.g].join(','));
+  const blob = new Blob([head + '\n' + lines.join('\n')], {type:'text/csv'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
+  a.download = `camie-registrations-${state.g}-${RUN.last_actual_date}.csv`; a.click(); URL.revokeObjectURL(a.href);
+}
+
+function kpis(){
+  const s = RUN.series;
+  const d = s.daily.filter(r => r.type==='forecast').slice(0,30);
+  const prevD = s.daily.filter(r => r.type==='actual').slice(-30);
+  const sum = (a,k) => a.reduce((t,r) => t + r[k], 0);
+  const nextM = s.monthly.find(r => r.type==='forecast');
+  const nextMly = s.monthly[s.monthly.indexOf(nextM) - 12];
+  const thisY = s.yearly.find(r => r.type==='partial'), nextY = s.yearly.find(r => r.type==='forecast');
+  const prevY = s.yearly.filter(r => r.type==='actual').at(-1);
+  const delta = (a,b) => { if (!b) return ''; const p = (a/b-1)*100; return `<span class="delta ${p>=0?'up':'down'}">${p>=0?'▲':'▼'} ${Math.abs(p).toFixed(1)}%</span>`; };
+  const card = (l,v,dl,r) => `<div class="card kpi"><div class="label">${l}</div><div class="value">${v}${dl}</div><div class="range">${r}</div></div>`;
+  document.getElementById('kpis').innerHTML =
+    card('Next 30 days', fmt(sum(d,'forecast')), delta(sum(d,'forecast'), sum(prevD,'actual')), `vs last 30 days · ${fmt(d[0].forecast)} expected tomorrow`) +
+    card(`Next month · ${nextM.date}`, fmt(nextM.forecast), delta(nextM.forecast, nextMly && nextMly.actual), `vs ${nextMly ? nextMly.date : 'last year'} · 80%: ${fmt(nextM.lower)} – ${fmt(nextM.upper)}`) +
+    card(`Year ${thisY.date} (projected)`, fmt(thisY.forecast), delta(thisY.forecast, prevY.actual), `vs ${prevY.date} · ${fmt(thisY.actual)} so far`) +
+    card(`Year ${nextY.date}`, fmt(nextY.forecast), delta(nextY.forecast, thisY.forecast), `vs ${thisY.date} · 80%: ${fmt(nextY.lower)} – ${fmt(nextY.upper)}`);
+}
+
+function status(){
+  const fb = RUN.fallback_used, el = document.getElementById('status');
+  el.classList.toggle('fallback', fb);
+  el.innerHTML = `<span class="dot"></span>${fb ? 'Backup active:' : 'Model:'} <b>${NAMES[RUN.model]}</b>${fb ? '' : ' · ETS backup on standby'}`;
+  const bn = document.getElementById('banner');
+  if (fb){ bn.hidden = false; bn.textContent = `TimesFM 2.5 was unavailable for this run, so the forecast was produced by the Holt-Winters ETS backup. Reason: ${RUN.fallback_reason}`; }
+}
+function accuracy(){
+  const b = RUN.backtest; if (!b) return;
+  const st = (k,v) => `<div class="stat"><div class="k">${k}</div><div class="v">${v}</div></div>`;
+  document.getElementById('stats').innerHTML =
+    st('Error (WAPE)', (b.wape*100).toFixed(1)+'%') + st('Avg. error / day', b.mae.toFixed(1)) + st('Actuals in 80% range', (b.coverage80*100).toFixed(0)+'%');
+}
+</script>
+</body>
+</html>

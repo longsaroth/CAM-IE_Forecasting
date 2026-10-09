@@ -1,0 +1,9 @@
+pandas>=2.2
+numpy>=1.26
+statsmodels>=0.14   # Holt-Winters ETS (automatic backup)
+timesfm>=2.0.2      # TimesFM 2.5 checkpoint (Apache-2.0)
+torch>=2.4          # CPU build is enough: pip install torch --index-url https://download.pytorch.org/whl/cpu
+fastapi>=0.110
+uvicorn>=0.29
+sqlalchemy>=2.0
+python-dotenv
